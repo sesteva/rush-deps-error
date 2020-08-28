@@ -16,29 +16,24 @@
   "variants": [],
   "projects": [
     {
-      "packageName": "svelte-app",
-      "projectFolder": "apps/svelte-app",
+      "packageName": "@snx/schematics",
+      "projectFolder": "tools/schematics",
+      "reviewCategory": "tools"
+    },
+    {
+      "packageName": "my-app",
+      "projectFolder": "apps/my-app",
       "reviewCategory": "apps"
     },
     {
-      "packageName": "@flia/ui-core",
-      "projectFolder": "libs/ui-core",
-      "reviewCategory": "shared"
-    },
-    {
-      "packageName": "storybook",
-      "projectFolder": "tools/storybook",
-      "reviewCategory": "tools"
-    },
-    {
-      "packageName": "svelte-app-e2e",
-      "projectFolder": "e2e/svelte-app-e2e",
+      "packageName": "my-app-e2e",
+      "projectFolder": "e2e/my-app-e2e",
       "reviewCategory": "e2e"
     },
     {
-      "packageName": "@flia/schematics",
-      "projectFolder": "tools/schematics",
-      "reviewCategory": "tools"
+      "packageName": "@scx/login",
+      "projectFolder": "shared/login",
+      "reviewCategory": "shared"
     }
   ]
 }

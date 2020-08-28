@@ -68,4 +68,7 @@ common/autoinstallers/*/.npmrc
 **/apps/**/public/build/
 **/apps/**/node_modules/
 **/lib/**/dist/
+**/lib/**/.ng_build/
+**/lib/**/src/@my
 **/tools/storybook/storybook-static/
+

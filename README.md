@@ -8,42 +8,27 @@ Prerequisites
 
 ## Setup - Step 1
 
-If you are using this project as your boilerplate, either clone the repo
+    git clone [url] repo
+    cd frontend
 
-    git clone sesteva/megarepo company
-    cd company
-
-OR
-
-    pnpx degit sesteva/megarepo company
-
-If this is your company's repo, simply clone it.
-
-## Setup - Step 2
+## Setup - Step 2 - Global Dependencies
 
 Setup the correct version of Node inside the project's folder
 
+    nvm install --lts
     nvm use
 
-or for example
+If you want to set node LTS globaly
 
     nvm alias default 12.8
 
-Install PNPM and RUSHJS
+Install PNPM, RUSHJS and Angular-cli
 
-    yarn global add pnpm @microsfot/rush
+    npm i -g add pnpm @microsfot/rush @angular/cli
 
 Install deps
 
     rush update
-
-## Tips
-
-VS Code highlights JSON comments as errors by default, but it provides an optional “JSON with comments” mode. To enable this, add this line to your settings.json in VS Code:
-
-        "files.associations": { "*.json": "jsonc" }
-
-Install Svelte VSCode extension and code snippets
 
 ## Things you should know
 
@@ -52,12 +37,35 @@ Install Svelte VSCode extension and code snippets
 
 2. Avoid using npm or yarn or pnpm directly. Instead using rush cli.
 
+## Why pnpm over npm or yarn ?
+
+Short answer:
+• Fast. As fast as npm and Yarn.
+• Efficient. One version of a package is saved only ever once on a disk.
+• Great for monorepos.
+• Strict. A package can access only dependencies that are specified in its package.json.
+• Deterministic. Has a lockfile called pnpm-lock.yaml.
+• Works everywhere. Works on Windows, Linux and OS X.
+• Solves phantom dependencies problem
+
+Long answer:
+
+- https://rushjs.io/pages/advanced/phantom_deps/
+- https://rushjs.io/pages/advanced/npm_doppelgangers/
+- https://pnpm.js.org/en/motivation
+- https://rushjs.io/pages/maintainer/package_managers/
+- https://medium.com/better-programming/the-case-for-pnpm-over-npm-or-yarn-2b221607119
+
 ## Dev Workflows
 
-## Working with shared UI, Storybook, Svelte App and Svelte App E2E
+## The Full TDD dev experience
 
-The practice of TDD requires as to run our unit tests continuosly.
-What if we would like to take the same approach on different tools?
+I'm a dev working on App A, I want to:
+
+- run my App locally,
+- continously run my E2E tests
+- continously build the reusable components library in case I want to change something,
+- run Storybook locally to see all reusable components vriations.
 
 Having our shared component rebuild automatically is a must have. This removes friction if we want to create a reusable component as there is not additional repo or cognitive change cost.
 
@@ -70,14 +78,16 @@ In order to do it, a single command at the root of the project is all we need:
 
         rush dev
 
-if you would like to create additional flows, checkout the 'common/config/rush/command-line.json' and the documentation https://rushjs.io/pages/configs/command-line_json/
+If you would like to create additional flows, checkout the 'common/config/rush/command-line.json' and the documentation https://rushjs.io/pages/configs/command-line_json/
 
-## Start only the Svelte App
+## The Focused fellow
 
-    cd app/svelte-app
+I'm a dev working on App A, I just need to run my App.
+
+    cd app/app-a
     rushx dev
 
-## Working on the shared UI core component and Storybook
+I'm a dev working on reusable components only. You might want to continously build the package and run storybook with hot reload:
 
 Terminal 1:
 
@@ -89,16 +99,24 @@ Terminal 2:
     cd libs/ui-core
     rushx dev
 
+You might have picked up the idea. Just go into the proper folder and run whatever command available in the package.json. Simply use "rushx" with it.
+
+## The CI
+
+    TBD
+
 if you would like to create a flow, checkout the 'common/config/rush/command-line.json' and the documentation https://rushjs.io/pages/configs/command-line_json/
 
-## Add a depedency to the Svelte App
+## Commons Tasks
 
-    cd app/svelte-app
+### Add a depedency to an App
+
+    cd app/app-a
     rush add --package xstate
 
-If any other projects in the repo are using "example-lib", you can update them all to "1.2.3" in bulk:
+If any other projects in the repo are using "xstate", you can update them all to "1.2.3" in bulk:
 
-    cd app/svelte-app
+    cd app/app-a
     rush add -p xstate@1.2.3 --make-consistent
 
 Note we have used the the shorthand -p instead of --package
@@ -109,15 +127,14 @@ If you need a devDep, add --dev flag
 
 Same process as adding a dependency
 
-## Create a new svelte app
+## Create a new angular app
 
-    rush gen-svelte --name myapp
+    rush gen-angular --name myapp
 
 Behind the scenres:
 
-- This will create a new app inside the app's folder using the svelte/template boilerplate.
+- This will create a new app inside the app's folder using the ng cli.
 - Then it will clean up unncessary files such as .gitignore.
-- Transform the project to support Typescript.
 - It will also generate an E2E project using Cypress
 - It will update rush.json to include the new app and the E2E project.
 
@@ -130,43 +147,13 @@ In package.json
 - update dev script adding `-p 5001` , choose a unique port per app
 - update rollup config livereload to add new port per app `!production && livereload({ watch: "public", port: 35730 }),`
 
-## Create a new sapper app
+## Create a new shared component
 
-    rush gen-sapper --name myapp
+## Potential Problems
 
-This project already supports Typescript and Tailwind. It also has cypress already installed.
+### pnpm does not work with <LIB-NAME-HERE>?
 
-Behind the scenres:
-
-- This will create a new app inside the app's folder using the sesteva/sapper-app boilerplate.
-- Then it will clean up unncessary files such as .gitignore.
-- It will update rush.json to include the new app and the E2E project.
-
-Once it is done, please run `rush update` to install all deps.
-
-Until we automate this, you need to make two small changes on your apps
-
-In package.json
-
-- update dev:Sapper script adding `PORT 5001` right before `sapper dev` , choose a unique port per app
-- update rollup config livereload to add new port per app `!production && livereload({ watch: "public", port: 35730 }),`
-
-TODO: remove cypress from template and add it like other apps via gen-e2e in the custom commands.
-This gives more flexibility on how to create these apps.
-
-## Create a new angular app
-
-[TODO]
-
-## Create a new nextjs app
-
-[TODO]
-
-## Create a new svelte lib
-
-[TODO]
-
-## Common Problems
+Follow these solutions https://pnpm.js.org/en/faq#pnpm-does-not-work-with-your-project-here
 
 ### Linking of a new package doesnt work
 
@@ -188,69 +175,4 @@ https://rushstack.io/pages/contributing/get_started/
 
 Use HSL insted of HEX to define colors
 
-## TODO
-
-- choose versions when generating projects
-- jest testing library svelte
-- use TS for everything (example I should be able to see options values for Flex component )
-- form validation with Yup
-- add angular app - add to commands as proxy to angular cli?
-- Eslint config https://www.npmjs.com/package/@rushstack/eslint-config
-- CI setup https://rushjs.io/pages/maintainer/enabling_ci_builds/
-- folder tools/templates with command to generate new component, new app
-
-## Adding Storybook to a Svelte project that uses TS
-
-Follow https://storybook.js.org/docs/guides/guide-svelte/
-
-If it does not work, follow this:
-
-Add the following dependencies:
-
-- "@storybook/svelte": "^5.3.19",
-- "babel-loader": "^8.1.0",
-- "@babel/core": "^7.10.5",
-- "svelte-loader": "^2.13.6",
-- "@storybook/preset-typescript": "~3.0.0",
-- "ts-loader": "~8.0.1",
-- "fork-ts-checker-webpack-plugin": "~5.0.13",
-- "svelte-preprocess": "^4.0.0",
-
-package.json
-
-    "dev":"start-storybook"
-
-.storybook/main.js
-
-        module.exports = {
-            stories: ["../src/**/*.stories.ts"],
-            addons: ["@storybook/preset-typescript"],
-        };
-
-.storybook/webpack.config.js
-
-        const autoPreprocess = require("svelte-preprocess");
-
-        module.exports = ({ config, mode }) => {
-        const svelteLoader = config.module.rules.find(
-            (r) => r.loader && r.loader.includes("svelte-loader")
-        );
-        svelteLoader.options.preprocess = autoPreprocess({
-            less: { includePaths: ["src", "node_modules"] },
-            css: { includePaths: ["src", "node_modules"] },
-            typescript: {
-            tsconfigFile: "./tsconfig.json",
-            transpileOnly: true,
-            },
-        });
-        config.resolve.extensions.push(".ts", ".tsx");
-        return config;
-        };
-
-.tsconfig
-
-    {
-    "extends": "@tsconfig/svelte/tsconfig.json",
-    "include": ["src/**/*", "types/**/*"],
-    "exclude": ["node_modules/*", "public/*"]
-    }
+- More to come on the standards Atlassian wiki

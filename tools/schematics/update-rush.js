@@ -6,6 +6,33 @@ const exec = util.promisify(require("child_process").exec);
 
 const projectRoot = path.join(__dirname, "../..");
 
+function updateRushJsonForLib(appName, type) {
+  return new Promise((resolve, reject) => {
+    // get rush.json
+    const rushJSON = jsonc.parse(
+      fs.readFileSync(path.join(projectRoot, "rush.json"), "utf8")
+    );
+
+    // update projects
+    rushJSON.projects = [
+      ...rushJSON.projects,
+      {
+        packageName: `@scx/${appName}`,
+        projectFolder: `${type}/${appName}`,
+        reviewCategory: `${type}`,
+      },
+    ];
+
+    // Update rush.json back
+    fs.writeFileSync(
+      path.join(projectRoot, "rush.json"),
+      jsonc.stringify(rushJSON, null, "  ")
+    );
+
+    resolve();
+  });
+}
+
 function updateRushJson(appName, type) {
   return new Promise((resolve, reject) => {
     // get rush.json
@@ -33,7 +60,7 @@ function updateRushJson(appName, type) {
   });
 }
 
-async function rushUpdate(){
+async function rushUpdate() {
   const updateRush = `rush update`;
   try {
     await exec(updateRush);
@@ -45,5 +72,6 @@ async function rushUpdate(){
 
 module.exports = {
   updateRushJson,
-  rushUpdate
+  updateRushJsonForLib,
+  rushUpdate,
 };

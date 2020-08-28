@@ -34,6 +34,20 @@
       "summary": "Generates a new sapper app",
       "safeForSimultaneousRushProcesses": false,
       "shellCommand": "node common/scripts/gen-sapper.js"
+    },
+    {
+      "commandKind": "global",
+      "name": "gen-angular",
+      "summary": "Generates a new angular app",
+      "safeForSimultaneousRushProcesses": false,
+      "shellCommand": "node common/scripts/gen-ng.js"
+    },
+    {
+      "commandKind": "global",
+      "name": "gen-angular-lib",
+      "summary": "Generates a new angular reusable module",
+      "safeForSimultaneousRushProcesses": false,
+      "shellCommand": "node common/scripts/gen-ng-lib.js"
     }
   ],
   "parameters": [
@@ -41,7 +55,12 @@
       "parameterKind": "string",
       "longName": "--name",
       "description": "A string value for the generated application name",
-      "associatedCommands": ["gen-svelte", "gen-sapper"],
+      "associatedCommands": [
+        "gen-svelte",
+        "gen-sapper",
+        "gen-angular",
+        "gen-angular-lib"
+      ],
       "argumentName": "APP_NAME",
       "required": true
     }
