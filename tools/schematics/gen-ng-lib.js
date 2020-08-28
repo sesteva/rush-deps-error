@@ -68,7 +68,7 @@ function updateLibName(appName) {
 
 module.exports = async function genAngularLib(name) {
   const appName = name;
-  const installApp = `cd shared && cp -r ../tools/templates/angular-lib-template ${appName}`;
+  const installApp = `cd shared && cp -r ../tools/templates/angular-shared-template ${appName}`;
 
   try {
     const { installStdout, installStderr } = await exec(installApp);
