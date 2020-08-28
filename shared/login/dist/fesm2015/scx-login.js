@@ -1,16 +1,21 @@
 import { ɵɵdefineInjectable, ɵsetClassMetadata, Injectable, ɵɵdefineComponent, ɵɵelementStart, ɵɵtext, ɵɵelementEnd, Component, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule } from '@angular/core';
+import { of } from 'rxjs';
 
+class Customer {
+}
 class MyLibService {
-    constructor() { }
+    load() {
+        return of([]);
+    }
 }
 MyLibService.ɵfac = function MyLibService_Factory(t) { return new (t || MyLibService)(); };
 MyLibService.ɵprov = ɵɵdefineInjectable({ token: MyLibService, factory: MyLibService.ɵfac, providedIn: 'root' });
 /*@__PURE__*/ (function () { ɵsetClassMetadata(MyLibService, [{
         type: Injectable,
         args: [{
-                providedIn: 'root'
+                providedIn: 'root',
             }]
-    }], function () { return []; }, null); })();
+    }], null, null); })();
 
 class MyLibComponent {
     constructor() { }
@@ -53,5 +58,5 @@ MyLibModule.ɵinj = ɵɵdefineInjector({ factory: function MyLibModule_Factory(t
  * Generated bundle index. Do not edit.
  */
 
-export { MyLibComponent, MyLibModule, MyLibService };
+export { Customer, MyLibComponent, MyLibModule, MyLibService };
 //# sourceMappingURL=scx-login.js.map

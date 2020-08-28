@@ -1,12 +1,20 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core')) :
-    typeof define === 'function' && define.amd ? define('@scx/login', ['exports', '@angular/core'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.scx = global.scx || {}, global.scx.login = {}), global.ng.core));
-}(this, (function (exports, i0) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs')) :
+    typeof define === 'function' && define.amd ? define('@scx/login', ['exports', '@angular/core', 'rxjs'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.scx = global.scx || {}, global.scx.login = {}), global.ng.core, global.rxjs));
+}(this, (function (exports, i0, rxjs) { 'use strict';
 
+    var Customer = /** @class */ (function () {
+        function Customer() {
+        }
+        return Customer;
+    }());
     var MyLibService = /** @class */ (function () {
         function MyLibService() {
         }
+        MyLibService.prototype.load = function () {
+            return rxjs.of([]);
+        };
         return MyLibService;
     }());
     MyLibService.ɵfac = function MyLibService_Factory(t) { return new (t || MyLibService)(); };
@@ -15,9 +23,9 @@
         i0.ɵsetClassMetadata(MyLibService, [{
                 type: i0.Injectable,
                 args: [{
-                        providedIn: 'root'
+                        providedIn: 'root',
                     }]
-            }], function () { return []; }, null);
+            }], null, null);
     })();
 
     var MyLibComponent = /** @class */ (function () {
@@ -72,6 +80,7 @@
      * Generated bundle index. Do not edit.
      */
 
+    exports.Customer = Customer;
     exports.MyLibComponent = MyLibComponent;
     exports.MyLibModule = MyLibModule;
     exports.MyLibService = MyLibService;

@@ -29,6 +29,7 @@
     "@angular/cli": "~10.0.8",
     "@angular/compiler-cli": "~10.0.14",
     "@testing-library/angular": "^10.0.2",
+    "@testing-library/jest-dom": "~5.11.4",
     "@types/jest": "^26.0.10",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
