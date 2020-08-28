@@ -6,7 +6,7 @@ const { updateRushJsonForLib } = require("./update-rush");
 const jsonc = require("jsonc");
 const projectRoot = path.join(__dirname, "../..");
 
-function updateLocalProjectName(appName) {
+function updateAppName(appName) {
   return new Promise((resolve, reject) => {
     try {
       const packageJSON = jsonc.parse(
@@ -33,39 +33,6 @@ function updateLocalProjectName(appName) {
   });
 }
 
-function updateLibName(appName) {
-  return new Promise((resolve, reject) => {
-    try {
-      const packageJSON = jsonc.parse(
-        fs.readFileSync(
-          path.join(
-            projectRoot,
-            `/shared/${appName}/projects/my-lib/package.json`
-          ),
-          "utf8"
-        )
-      );
-
-      const updatedPackageJSON = {
-        ...packageJSON,
-        name: `@scx/${appName}`,
-      };
-
-      fs.writeFileSync(
-        path.join(
-          projectRoot,
-          `/shared/${appName}/projects/my-lib/package.json`
-        ),
-        jsonc.stringify(updatedPackageJSON, null, "  ")
-      );
-
-      resolve();
-    } catch (e) {
-      throw new Error(e);
-    }
-  });
-}
-
 module.exports = async function genAngularLib(name) {
   const appName = name;
   const installApp = `cd shared && cp -r ../tools/templates/angular-shared-template ${appName}`;
@@ -78,14 +45,7 @@ module.exports = async function genAngularLib(name) {
   }
 
   try {
-    await updateLocalProjectName(appName);
-    console.log("updating package json was a success");
-  } catch (error) {
-    console.error({ error });
-  }
-
-  try {
-    await updateLibName(appName);
+    await updateAppName(appName);
     console.log("updating package json was a success");
   } catch (error) {
     console.error({ error });
