@@ -19,21 +19,6 @@
       "packageName": "@snx/schematics",
       "projectFolder": "tools/schematics",
       "reviewCategory": "tools"
-    },
-    {
-      "packageName": "my-app",
-      "projectFolder": "apps/my-app",
-      "reviewCategory": "apps"
-    },
-    {
-      "packageName": "my-app-e2e",
-      "projectFolder": "e2e/my-app-e2e",
-      "reviewCategory": "e2e"
-    },
-    {
-      "packageName": "@scx/login",
-      "projectFolder": "shared/login",
-      "reviewCategory": "shared"
     }
   ]
 }
