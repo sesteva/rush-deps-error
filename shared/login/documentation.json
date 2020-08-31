@@ -1,0 +1,245 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [
+        {
+            "name": "MyLibService",
+            "id": "injectable-MyLibService-52a8c7a35bea31a561027f2ddf82312b",
+            "file": "src/my-lib.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "load",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<Customer[]>",
+                    "typeParameters": [],
+                    "line": 13
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Component, Injectable } from '@angular/core';\nimport { Observable, of } from 'rxjs';\n\nexport class Customer {\n  id: string;\n  name: string;\n}\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class MyLibService {\n  load(): Observable<Customer[]> {\n    return of([]);\n  }\n}\n",
+            "type": "injectable"
+        }
+    ],
+    "classes": [
+        {
+            "name": "Customer",
+            "id": "class-Customer-52a8c7a35bea31a561027f2ddf82312b",
+            "file": "src/my-lib.service.ts",
+            "type": "class",
+            "sourceCode": "import { Component, Injectable } from '@angular/core';\nimport { Observable, of } from 'rxjs';\n\nexport class Customer {\n  id: string;\n  name: string;\n}\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class MyLibService {\n  load(): Observable<Customer[]> {\n    return of([]);\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [],
+    "components": [
+        {
+            "name": "MyLibComponent",
+            "id": "component-MyLibComponent-393a36f3dd514852535deacbfde5087f",
+            "file": "src/my-lib.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "lib-my-lib",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<p>\n  my-lib works!\n</p>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'lib-my-lib',\n  template: `\n    <p>\n      my-lib works!\n    </p>\n  `,\n  styles: [\n  ]\n})\nexport class MyLibComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 13
+            },
+            "implements": [
+                "OnInit"
+            ]
+        }
+    ],
+    "modules": [
+        {
+            "name": "MyLibModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "MyLibComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "MyLibComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/my-lib.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/my-lib.stories.ts",
+                "type": "Story<MyLibComponent>",
+                "defaultValue": "(args: MyLibComponent) => ({\n  component: MyLibComponent,\n  props: args,\n})"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/my-lib.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/my-lib.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/my-lib.stories.ts",
+                    "type": "Story<MyLibComponent>",
+                    "defaultValue": "(args: MyLibComponent) => ({\n  component: MyLibComponent,\n  props: args,\n})"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/my-lib.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MyLibComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/my-lib.service.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "Customer",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/my-lib.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "MyLibService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/my-lib.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/my-lib.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

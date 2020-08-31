@@ -19,13 +19,8 @@
    * will recalculate all version selections.
    */
   "preferredVersions": {
-    "svelte": "^3.0.0",
-    "svelte-check": "^0.1.0",
-    "svelte-preprocess": "^4.0.0",
-    "@rollup/plugin-typescript": "^4.0.0",
     "typescript": "^3.9.5",
-    "tslib": "^2.0.0",
-    "@tsconfig/svelte": "^1.0.0"
+    "tslib": "^2.0.0"
   },
 
   /**
