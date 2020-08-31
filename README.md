@@ -8,7 +8,7 @@ Prerequisites
 
 ## Setup - Step 1
 
-    git clone https://git.securonix.net/engineering/shared/frontend repo
+    git clone url repo
     cd frontend
 
 ## Setup - Step 2 - Global Dependencies
